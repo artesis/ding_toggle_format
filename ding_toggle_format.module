@@ -39,37 +39,53 @@ function ding_toggle_format_block_view($delta = '') {
 function ding_toggle_format_render_link() {
   // get view_type from url
   $view_type = arg(1);
-  // construct the image's path (.gif stored in a module subdir)
-  $image_path = drupal_get_path('module', 'ding_toggle_format') . '/images/blank.gif';
 
-  // make some text for the image's alt & title tags (SEO, accessibility)
-  $image_alt = t('Toggle format');
-  $image_title = t('Toggle format link');
-  $format_link = '<span class="ding-toggle-format-label">' . t('Display format: ') . '</span>';
+  $markup = NULL;
 
   // render image html using theme_image (returns NULL if file doesn't exist)
   if ($view_type != 'collection') {
-    $format_image = theme('image', array(
-      'path' => $image_path,
-      'alt' => $image_alt,
-      'title' => $image_title,
-      'attributes' => array(
-        'id' => 'ding-toggle-format-image',
+    $markup = array(
+      array(
+        '#markup' => '<div class="btn-toolbar" id="ding-toggle-format"><div class="btn-group">',
       ),
-    ));
-    // if the image rendered ok, render link using above variables
-    $image_link = l($format_image, '#', array(
-      'html' => TRUE,
-      'attributes' => array(
-        'title' => $image_title,
-        'id' => 'ding-toggle-format',
-        'class' => 'ding-toggle-format-short',
+      array(
+        '#theme' => 'link',
+        '#text' => '<i class="icon-white icon-th"></i>',
+        '#path' => current_path(),
+        '#options' => array(
+          'attributes' => array(
+            'class' => array(
+              'ding-toggle-format-long',
+              'btn',
+              'btn-artesis-turquoise',
+            ),
+            'title'=> t('Toggle format: long'),
+          ),
+          'html' => TRUE,
+        ),
       ),
-    ));
-
-    $format_link .= $image_link;
+      array(
+        '#theme' => 'link',
+        '#text' => '<i class="icon-white icon-th-list"></i>',
+        '#path' => current_path(),
+        '#options' => array(
+          'attributes' => array(
+            'class' => array(
+              'ding-toggle-format-short',
+              'btn',
+              'btn-artesis-turquoise',
+            ),
+            'title'=> t('Toggle format: short'),
+          ),
+          'html' => TRUE,
+        ),
+      ),
+      array(
+        '#markup' => '</div></div>',
+      ),
+    );
   }
 
-  return $format_link;
+  return $markup;
 }
 
