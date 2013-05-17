@@ -50,7 +50,7 @@ function ding_toggle_format_render_link() {
       ),
       array(
         '#theme' => 'link',
-        '#text' => '<i class="icon-white icon-th"></i>',
+        '#text' => '<i class="icon-white icon-list"></i>',
         '#path' => current_path(),
         '#options' => array(
           'attributes' => array(
@@ -66,7 +66,7 @@ function ding_toggle_format_render_link() {
       ),
       array(
         '#theme' => 'link',
-        '#text' => '<i class="icon-white icon-th-list"></i>',
+        '#text' => '<i class="icon-white icon-th"></i>',
         '#path' => current_path(),
         '#options' => array(
           'attributes' => array(
