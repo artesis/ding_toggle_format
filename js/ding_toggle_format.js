@@ -2,9 +2,12 @@
 
   Drupal.behaviors.toggleFormat = {
     attach: function(context, settings) {
-      $('#ding-toggle-format', context).click(function() {
-        var toFormat = ($.cookie("ding_toggle_format") == 'short') ? 'long': 'short';
-        Drupal.setFormat(toFormat);
+      $('#ding-toggle-format a', context).click(function(e) {
+        e.preventDefault();
+        if (!$(this).hasClass('disabled')) {
+          var toFormat = ($.cookie("ding_toggle_format") == 'short') ? 'long': 'short';
+          Drupal.setFormat(toFormat);
+        }
         return false;
       });
     }
@@ -20,9 +23,16 @@
   };
 
   Drupal.setFormat = function(format) {
+    var formatClass = 'ding-toggle-format-' + format;
+    // Remove format from div
     $("#ding-toggle-format").removeClass('ding-toggle-format-long');
     $("#ding-toggle-format").removeClass('ding-toggle-format-short');
-    $("#ding-toggle-format").addClass('ding-toggle-format-' + format);
+    // Remove disabled from toggle links
+    $("#ding-toggle-format a").removeClass('disabled');
+    // Set active toogle link
+    $("#ding-toggle-format a." + formatClass).addClass('disabled');
+    $("#ding-toggle-format").addClass(formatClass);
+    // Set format to search results
     $("li.search-result").removeClass('ding-format-long');
     $("li.search-result").removeClass('ding-format-short');
     $("li.search-result").addClass('ding-format-' + format);
