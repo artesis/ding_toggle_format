@@ -28,9 +28,9 @@
     $("#ding-toggle-format").removeClass('ding-toggle-format-long');
     $("#ding-toggle-format").removeClass('ding-toggle-format-short');
     // Remove disabled from toggle links
-    $("#ding-toggle-format a").removeClass('disabled');
+    $("#ding-toggle-format a").removeClass('active');
     // Set active toogle link
-    $("#ding-toggle-format a." + formatClass).addClass('disabled');
+    $("#ding-toggle-format a." + formatClass).addClass('active');
     $("#ding-toggle-format").addClass(formatClass);
     // Set format to search results
     $("li.search-result").removeClass('ding-format-long');

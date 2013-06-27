@@ -57,6 +57,7 @@ function ding_toggle_format_render_link() {
             'class' => array(
               'ding-toggle-format-long',
               'btn',
+              'btn-small',
               'btn-artesis-turquoise',
             ),
             'title'=> t('Toggle format: long'),
@@ -73,6 +74,7 @@ function ding_toggle_format_render_link() {
             'class' => array(
               'ding-toggle-format-short',
               'btn',
+              'btn-small',
               'btn-artesis-turquoise',
             ),
             'title'=> t('Toggle format: short'),
