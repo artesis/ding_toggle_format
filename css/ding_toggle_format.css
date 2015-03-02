@@ -16,4 +16,6 @@ a.ding-toggle-format-long {
     background: transparent url(../images/toggle_format_long.png) no-repeat right center;
 }
 
-
+.ding-format-short .field-type-ting-details-series-description {
+  display: none;
+}
